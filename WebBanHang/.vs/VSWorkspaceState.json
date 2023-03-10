@@ -3,9 +3,10 @@
     "",
     "\\WebBanHang",
     "\\WebBanHang\\Views",
+    "\\WebBanHang\\Views\\Cart",
     "\\WebBanHang\\Views\\Home",
     "\\WebBanHang\\Views\\Shared"
   ],
-  "SelectedNode": "\\WebBanHang\\Views\\Home\\Index.cshtml",
+  "SelectedNode": "\\WebBanHang\\obj",
   "PreviewInSolutionExplorer": false
 }

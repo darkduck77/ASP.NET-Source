@@ -3,14 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WebBanHang.Context;
+using WebBanHang.Models;
 
 namespace WebBanHang.Controllers
 {
     public class HomeController : Controller
     {
+        WebsitebanhangEntities3 pd=new WebsitebanhangEntities3();
         public ActionResult Index()
         {
-            return View();
+            HomeModels homeModels = new HomeModels();
+            homeModels.ListProducts= pd.Product.ToList();
+            homeModels.ListBrands= pd.Brand.ToList();
+            homeModels.ListCategories=pd.Category.ToList();
+            homeModels.ListUsers=pd.User.ToList();
+            return View(homeModels);
         }
 
         public ActionResult About()
