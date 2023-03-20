@@ -1,4 +1,4 @@
-﻿
+﻿@model WebBanHang.Models.CartModels
 @{
     ViewBag.Title = "Cart";
 }
@@ -46,14 +46,14 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @for (int i = 1; i < 4; i++)
+                            @foreach (var item in Model.ListProducts.Take(3))
                             {
                                 <tr>
                                     <td>
                                         <figure class="itemside">
-                                            <div class="aside"><img src="~/Content/images/items/1.jpg" class="img-sm"></div>
+                                            <div class="aside"><img src="~/Content/images/items/@item.Avatar" class="img-sm"></div>
                                             <figcaption class="info">
-                                                <a class="title text-dark"> @Html.ActionLink("Sản phẩm " + i, "ProductDetail", "ProductDetail", new { }, null)</a>
+                                               @Html.ActionLink(item.Name, "ProductDetail", "ProductDetail", new { Id = item.Id }, null)
                                                 <p class="text-muted small">Size: XL, Color: blue, <br> Brand: Gucci</p>
                                             </figcaption>
                                         </figure>
@@ -68,8 +68,9 @@
                                     </td>
                                     <td>
                                         <div class="price-wrap">
-                                            <var class="price">$1156.00</var>
-                                            <small class="text-muted"> $315.20 each </small>
+                                            <del class="text-muted"> @item.Price </del>
+                                            <var class="price">@item.PriceDiscount</var>
+
                                         </div> <!-- price-wrap .// -->
                                     </td>
                                     <td class="text-right">
