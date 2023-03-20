@@ -6,8 +6,9 @@
     "\\WebBanHang\\WebBanHang\\Context",
     "\\WebBanHang\\WebBanHang\\Models",
     "\\WebBanHang\\WebBanHang\\Views",
-    "\\WebBanHang\\WebBanHang\\Views\\Home"
+    "\\WebBanHang\\WebBanHang\\Views\\Home",
+    "\\WebBanHang\\WebBanHang\\Views\\Registor"
   ],
-  "SelectedNode": "\\WebBanHang\\WebBanHang.sln",
+  "SelectedNode": "\\WebBanHang\\WebBanHang\\Views\\Registor\\Registor.cshtml",
   "PreviewInSolutionExplorer": false
 }
