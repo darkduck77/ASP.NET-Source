@@ -2,12 +2,13 @@
   "ExpandedNodes": [
     "",
     "\\WebBanHang",
+    "\\WebBanHang\\Controllers",
     "\\WebBanHang\\Scripts",
     "\\WebBanHang\\Views",
     "\\WebBanHang\\Views\\Cart",
     "\\WebBanHang\\Views\\Home",
     "\\WebBanHang\\Views\\Shared"
   ],
-  "SelectedNode": "\\WebBanHang.sln",
+  "SelectedNode": "\\WebBanHang\\Controllers\\LoginController.cs",
   "PreviewInSolutionExplorer": false
 }
