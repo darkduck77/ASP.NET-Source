@@ -57,32 +57,53 @@
                     </div> <!-- col.// -->
                     <div class="col-xl-4 col-lg-4 col-md-6">
                         <div class="widgets-wrap float-md-right">
-                            <div class="widget-header mr-3">
-                                <a href="#" class="widget-view">
-                                    <div class="icon-area">
-                                        <i class="fa fa-user"></i>
-                                        <span class="notify">3</span>
-                                    </div>
-                                    <small class="text"> @Html.ActionLink("Đăng nhập", "Login", "Login", new { }, null)</small>
-                                </a>
+                            <div class="account_desc">
+                                <ul>
+                                    @if (Session["idUser"] != null)
+                                    {
+                                        <div class="widget-header mr-3">
+                                            <a href="#" class="widget-view">
+                                                <div class="icon-area">
+                                                    <i class="fa fa-user"></i>
+                                                    <span class="notify">3</span>
+                                                </div>
+                                                <small class="text"> @Html.ActionLink("Trang quản trị", "Product", "Admin", new { }, null)</small>
+                                            </a>
+                                        </div>
+
+                                    }
+                                    else
+                                    {
+                                        <div class="widget-header mr-3">
+                                            <a href="#" class="widget-view">
+                                                <div class="icon-area">
+                                                    <i class="fa fa-user"></i>
+                                                    <span class="notify">3</span>
+                                                </div>
+                                                <small class="text"> @Html.ActionLink("Đăng nhập", "Login", "Login", new { }, null)</small>
+                                            </a>
+                                        </div>
+                                        <div class="widget-header mr-3">
+                                            <a href="#" class="widget-view">
+                                                <div class="icon-area">
+                                                    <i class="fa fa-comment-dots"></i>
+                                                    <span class="notify">1</span>
+                                                </div>
+                                                <small class="text"> @Html.ActionLink("Đăng ký", "Registor", "Registor", new { }, null)</small>
+                                            </a>
+                                        </div>
+                                        <div class="widget-header mr-3">
+                                            <a href="#" class="widget-view">
+                                                <div class="icon-area">
+                                                    <i class="fa fa-store"></i>
+                                                </div>
+                                                <small class="text"> @Html.ActionLink("Giỏ hàng", "Cart", "Cart", new { }, null)</small>
+                                            </a>
+                                        </div>
+                                    }
+                                </ul>
                             </div>
-                            <div class="widget-header mr-3">
-                                <a href="#" class="widget-view">
-                                    <div class="icon-area">
-                                        <i class="fa fa-comment-dots"></i>
-                                        <span class="notify">1</span>
-                                    </div>
-                                    <small class="text"> @Html.ActionLink("Đăng ký", "Registor", "Registor", new { }, null)</small>
-                                </a>
-                            </div>
-                            <div class="widget-header mr-3">
-                                <a href="#" class="widget-view">
-                                    <div class="icon-area">
-                                        <i class="fa fa-store"></i>
-                                    </div>
-                                   <small class="text"> @Html.ActionLink("Giỏ hàng", "Cart", "Cart", new {},null)</small>
-                                </a>
-                            </div>
+                            
                         </div> <!-- widgets-wrap.// -->
                     </div> <!-- col.// -->
                 </div> <!-- row.// -->

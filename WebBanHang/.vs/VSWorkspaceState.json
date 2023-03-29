@@ -2,11 +2,12 @@
   "ExpandedNodes": [
     "",
     "\\WebBanHang",
+    "\\WebBanHang\\Scripts",
     "\\WebBanHang\\Views",
     "\\WebBanHang\\Views\\Cart",
     "\\WebBanHang\\Views\\Home",
     "\\WebBanHang\\Views\\Shared"
   ],
-  "SelectedNode": "\\WebBanHang\\obj",
+  "SelectedNode": "\\WebBanHang.sln",
   "PreviewInSolutionExplorer": false
 }

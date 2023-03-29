@@ -10,8 +10,11 @@ using WebBanHang.Context;
 
 namespace WebBanHang.Controllers
 {
+
+   
     public class RegistorController : Controller
     {
+        WebsitebanhangEntities3 objModel = new WebsitebanhangEntities3();
         //create a string MD5
         public static string GetMD5(string str)
         {
@@ -27,7 +30,7 @@ namespace WebBanHang.Controllers
             }
             return byte2String;
         }
-        WebsitebanhangEntities3 objModel = new WebsitebanhangEntities3();
+      
         // GET: Registor
         [HttpGet]
         public ActionResult Registor()
@@ -47,7 +50,7 @@ namespace WebBanHang.Controllers
                     objModel.Configuration.ValidateOnSaveEnabled = false;
                     objModel.User.Add(_user);
                     objModel.SaveChanges();
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Registor");
                 }
                 else
                 {
