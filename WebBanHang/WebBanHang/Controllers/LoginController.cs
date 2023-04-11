@@ -7,6 +7,7 @@ using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using WebBanHang.Context;
+using WebBanHang.Models;
 
 namespace WebBanHang.Controllers
 {
@@ -55,7 +56,7 @@ namespace WebBanHang.Controllers
                 else
                 {
                     ViewBag.error = "Login failed";
-                    return RedirectToAction("Login");
+                    return RedirectToAction("../Home/Index");
                 }
             }
             return View();

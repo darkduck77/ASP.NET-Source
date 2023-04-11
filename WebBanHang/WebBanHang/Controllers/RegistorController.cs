@@ -50,7 +50,7 @@ namespace WebBanHang.Controllers
                     objModel.Configuration.ValidateOnSaveEnabled = false;
                     objModel.User.Add(_user);
                     objModel.SaveChanges();
-                    return RedirectToAction("Registor");
+                    return RedirectToAction("../Home/Index");
                 }
                 else
                 {
