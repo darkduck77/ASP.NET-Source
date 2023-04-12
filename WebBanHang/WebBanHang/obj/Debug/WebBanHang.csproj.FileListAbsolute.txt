@@ -243,3 +243,7 @@ C:\Users\balab\OneDrive\Desktop\ASP.NET-Source\WebBanHang\WebBanHang\obj\Debug\W
 C:\Users\balab\OneDrive\Desktop\ASP.NET-Source\WebBanHang\WebBanHang\obj\Debug\WebBanHang.csproj.CopyComplete
 C:\Users\balab\OneDrive\Desktop\ASP.NET-Source\WebBanHang\WebBanHang\obj\Debug\WebBanHang.dll
 C:\Users\balab\OneDrive\Desktop\ASP.NET-Source\WebBanHang\WebBanHang\obj\Debug\WebBanHang.pdb
+C:\Users\balab\OneDrive\Desktop\ASP.NET-Source\WebBanHang\WebBanHang\bin\PagedList.dll
+C:\Users\balab\OneDrive\Desktop\ASP.NET-Source\WebBanHang\WebBanHang\bin\PagedList.Mvc.dll
+C:\Users\balab\OneDrive\Desktop\ASP.NET-Source\WebBanHang\WebBanHang\bin\PagedList.xml
+C:\Users\balab\OneDrive\Desktop\ASP.NET-Source\WebBanHang\WebBanHang\bin\PagedList.Mvc.xml

@@ -51,12 +51,12 @@ namespace WebBanHang.Controllers
                     Session["FullName"] = data.FirstOrDefault().FirstName + " " + data.FirstOrDefault().LastName;
                     Session["Email"] = data.FirstOrDefault().Email;
                     Session["idUser"] = data.FirstOrDefault().Id;
-                    return RedirectToAction("Login");
+                    return RedirectToAction("../Home/Index");
                 }
                 else
                 {
                     ViewBag.error = "Login failed";
-                    return RedirectToAction("../Home/Index");
+                    return RedirectToAction("Login");
                 }
             }
             return View();

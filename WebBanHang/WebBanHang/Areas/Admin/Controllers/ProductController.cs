@@ -50,12 +50,12 @@ namespace WebBanHang.Areas.Admin.Controllers
             List<ProductType> lstpdt = new List<ProductType>();
             ProductType objpdt = new ProductType();
             objpdt.Id = 01;
-            objpdt.Name = "Giảm Giá";
+            objpdt.Name = "Giảm giá";
            
             lstpdt.Add(objpdt);
             objpdt = new ProductType();
             objpdt.Id = 02;
-            objpdt.Name = "Đề Xuất";
+            objpdt.Name = "Đề xuất";
             lstpdt.Add(objpdt);
             DataTable dtpdtype = converter.ToDataTable(lstpdt);
             ViewBag.ListPDType   = cm.ToSelectList(dtpdtype, "Id", "Name");

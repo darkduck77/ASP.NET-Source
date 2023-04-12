@@ -1,5 +1,4 @@
 ﻿@model IEnumerable<WebBanHang.Context.Product>
-
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
@@ -7,7 +6,7 @@
 
 <div class="content-wrapper">
     <p>
-        @Html.ActionLink("Create New", "Create")
+        @Html.ActionLink("Tạo mới sản phẩm", "Create")
     </p>
     <table class="table">
         <tr>
@@ -42,9 +41,6 @@
                 @Html.DisplayNameFor(model => model.BrandID)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ShowOnHomePage)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.DisplayOrder)
             </th>
             <th>
@@ -63,10 +59,11 @@
                     @Html.DisplayFor(modelItem => item.Name)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Avatar)
+                    <img src="~/Content/images/items/@item.Avatar" height="80" class="img-bg" />
+                   
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.CategoryId)
+                    @Html.DisplayFor(modelItem => @item.CategoryId)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.ShortDes)
@@ -90,12 +87,6 @@
                     @Html.DisplayFor(modelItem => item.BrandID)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Deleted)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ShowOnHomePage)
-                </td>
-                <td>
                     @Html.DisplayFor(modelItem => item.DisplayOrder)
                 </td>
                 <td>
@@ -105,9 +96,9 @@
                     @Html.DisplayFor(modelItem => item.UpdatedOnUtc)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    @Html.ActionLink("Sửa", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Chi tiết", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Xóa", "Delete", new { id = item.Id })
                 </td>
             </tr>
         }
