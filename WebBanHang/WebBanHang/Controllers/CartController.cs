@@ -11,7 +11,7 @@ namespace WebBanHang.Controllers
     public class CartController : Controller
     {
         // GET: Cart
-        WebsitebanhangEntities3 pd = new WebsitebanhangEntities3();
+        WebsitebanhangEntities4 pd = new WebsitebanhangEntities4();
         public ActionResult Cart()
         {
             CartModels model = new CartModels();

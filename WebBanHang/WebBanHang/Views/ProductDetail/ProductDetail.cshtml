@@ -62,12 +62,7 @@
                             <div class="img-big-wrap">
                                 <div> <a href="#"><img src="~/Content/images/items/@Model.Avatar"></a></div>
                             </div> <!-- slider-product.// -->
-                            <div class="thumbs-wrap">
-                                <a href="#" class="item-thumb"> <img src="~/Content/images/items/15.jpg"></a>
-                                <a href="#" class="item-thumb"> <img src="~/Content/images/items/15-1.jpg"></a>
-                                <a href="#" class="item-thumb"> <img src="~/Content/images/items/15-2.jpg"></a>
-                                <a href="#" class="item-thumb"> <img src="~/Content/images/items/15-1.jpg"></a>
-                            </div> <!-- slider-nav.// -->
+                           
                         </article> <!-- gallery-wrap .end// -->
                     </div> <!-- card.// -->
                 </aside>
@@ -138,12 +133,10 @@
                                 </div>
                             </div> <!-- col.// -->
                             <div class="form-group col-md">
-                                <a href="#" class="btn  btn-primary">
-                                    <i class="fas fa-shopping-cart"></i> <span class="text">Add to cart</span>
+                                <a href="#" >
+                                    <span>@Html.ActionLink("Thêm vào giỏ hàng", "Cart", "Cart", null, new {@class="btn  btn-primary" })</span>
                                 </a>
-                                <a href="#" class="btn btn-light">
-                                    <i class="fas fa-envelope"></i> <span class="text">Contact supplier</span>
-                                </a>
+                              
                             </div> <!-- col.// -->
                         </div> <!-- row.// -->
 

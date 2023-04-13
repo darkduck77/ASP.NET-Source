@@ -10,7 +10,7 @@ namespace WebBanHang.Controllers
     public class ProductDetailController : Controller
     {
         // GET: ProductDetail
-        WebsitebanhangEntities3 con=new WebsitebanhangEntities3();
+        WebsitebanhangEntities4 con=new WebsitebanhangEntities4();
         public ActionResult ProductDetail(int Id)
         {
             var product=con.Product.Where(p=>p.Id==Id).FirstOrDefault();

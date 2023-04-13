@@ -14,7 +14,7 @@ namespace WebBanHang.Areas.Admin.Controllers
 {
     public class ProductController : Controller
     {
-        WebsitebanhangEntities3 pd = new WebsitebanhangEntities3();
+        WebsitebanhangEntities4 pd = new WebsitebanhangEntities4();
         // GET: Admin/Product
         public ActionResult LoadData()
         {
@@ -88,7 +88,7 @@ namespace WebBanHang.Areas.Admin.Controllers
                         //tenhinh.png
                         objProduct.Avatar = fileName;
                         //lưu file hình
-                        objProduct.ImageUpload.SaveAs(Path.Combine(Server.MapPath("~/Content/images/"), fileName));
+                        objProduct.ImageUpload.SaveAs(Path.Combine(Server.MapPath("~/Content/images/items"), fileName));
                     }
                     objProduct.CreatedOnUtc = DateTime.Now;
                     pd.Product.Add(objProduct);

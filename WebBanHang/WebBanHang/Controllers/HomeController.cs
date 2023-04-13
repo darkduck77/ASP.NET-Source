@@ -10,7 +10,7 @@ namespace WebBanHang.Controllers
 {
     public class HomeController : Controller
     {
-        WebsitebanhangEntities3 pd=new WebsitebanhangEntities3();
+        WebsitebanhangEntities4 pd=new WebsitebanhangEntities4();
         public ActionResult Index()
         {
             HomeModels homeModels = new HomeModels();

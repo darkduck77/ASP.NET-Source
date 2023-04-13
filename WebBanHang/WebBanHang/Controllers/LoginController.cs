@@ -14,7 +14,7 @@ namespace WebBanHang.Controllers
     public class LoginController : Controller
     {
         // GET: Login
-        WebsitebanhangEntities3 objModel = new WebsitebanhangEntities3();
+        WebsitebanhangEntities4 objModel = new WebsitebanhangEntities4();
         //create a string MD5
         public static string GetMD5(string str)
         {
