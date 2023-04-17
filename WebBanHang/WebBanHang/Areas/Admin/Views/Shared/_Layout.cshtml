@@ -27,9 +27,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a >@Html.ActionLink("Trang chủ", "Index", "Home", new { }, null)</a>
+                    <a>@Html.ActionLink("Trang chủ", "Index", "Home", new { }, new { @class = "nav-link" })</a>
                 </li>
-                
+              
             </ul>
 
             <!-- Right navbar links -->
@@ -58,18 +58,27 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <!-- Add icons to the links using the .nav-icon class
                     with font-awesome or any other icon font library -->
                         <li class="nav-item menu-open">
-
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <i class="far fa-circle nav-icon">
-                                        <a >
-                                            @Html.ActionLink("Danh sách sản phẩm", "Index", "Product", new { }, null)
-                                        </a>
-                                    </i>
+                                   
+                                      
+                                       @Html.ActionLink("Danh sách sản phẩm", "Index", "Product", null, new {@class="far fa-circle nav-icon"})
                                    
                                 </li>
+                                <li class="nav-item">
+                                  
+                                            @Html.ActionLink("Danh sách thương hiệu", "Index", "Brand", null, new { @class = "far fa-circle nav-icon" })
+                                      
+                                  
+
+                                </li>
+                                <li class="nav-item">
+                                 
+                                            @Html.ActionLink("Danh sách tài khoản", "Index", "User", null, new { @class = "far fa-circle nav-icon" })
                                 
+                                </li>
                             </ul>
+                              
                         </li>
                         
                     </ul>

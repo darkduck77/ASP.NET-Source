@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PagedList;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -16,26 +17,8 @@ namespace WebBanHang.Areas.Admin.Controllers
     {
         WebsitebanhangEntities4 pd = new WebsitebanhangEntities4();
         // GET: Admin/Product
-        public ActionResult LoadData()
-        {
-            // Tải dữ liệu sản phẩm
-            var data = pd.Product.ToList();
-
-            // Trả về View với dữ liệu sản phẩm
-            return View("ViewName", data);
-        }
-        public ActionResult Index()
-        {
-            var lstPd = pd.Product.ToList();
-            return View(lstPd);
-        }
-        public ActionResult Details(int Id)
-        {
-            var objpd = pd.Product.Where(n => n.Id == Id).FirstOrDefault();
-            return View(objpd);
-        }
-        [HttpGet]
-        public ActionResult Create()
+       
+        void LoadData()
         {
             Common cm = new Common();
             var lstcat = pd.Category.ToList();
@@ -51,27 +34,64 @@ namespace WebBanHang.Areas.Admin.Controllers
             ProductType objpdt = new ProductType();
             objpdt.Id = 01;
             objpdt.Name = "Giảm giá";
-           
+
             lstpdt.Add(objpdt);
             objpdt = new ProductType();
             objpdt.Id = 02;
             objpdt.Name = "Đề xuất";
             lstpdt.Add(objpdt);
             DataTable dtpdtype = converter.ToDataTable(lstpdt);
-            ViewBag.ListPDType   = cm.ToSelectList(dtpdtype, "Id", "Name");
+            ViewBag.ListPDType = cm.ToSelectList(dtpdtype, "Id", "Name");
+        }
+        public ActionResult Index(string currentFilter, string SearchString, int? page)
+        {
+            var lstB = new List<Product>();
+            if (SearchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                SearchString = currentFilter;
+            }
+            if (!string.IsNullOrEmpty(SearchString))
+            {
+                lstB = pd.Product.Where(n => n.Name.Contains(SearchString)).ToList();
+
+            }
+            else
+            {
+                lstB = pd.Product.ToList();
+            }
+            ViewBag.CurrentFilter = SearchString;
+            int pageSize = 6;
+            int pageNumber = (page ?? 1);
+
+            lstB = lstB.OrderByDescending(n => n.Id).ToList();
+            return View(lstB.ToPagedList(pageNumber, pageSize));
+        }
+        public ActionResult Details(int Id)
+        {
+            var objpd = pd.Product.Where(n => n.Id == Id).FirstOrDefault();
+            return View(objpd);
+        }
+        [HttpGet]
+        public ActionResult Create()
+        {
+           this.LoadData();
             return View();
 
 
         }
 
-       
+
 
 
         [ValidateInput(false)]
         [HttpPost]
         public ActionResult Create(Product objProduct)
         {
-            
+
             this.LoadData();
             if (ModelState.IsValid)
             {
@@ -137,9 +157,9 @@ namespace WebBanHang.Areas.Admin.Controllers
                 //tenhinh.png
                 obpd.Avatar = fileName;
                 //lưu file hình
-                obpd.ImageUpload.SaveAs(Path.Combine(Server.MapPath("~/Content/images/"), fileName));
+                obpd.ImageUpload.SaveAs(Path.Combine(Server.MapPath("~/Content/images/items"), fileName));
             }
-            pd.Entry(obpd).State= EntityState.Modified;
+            pd.Entry(obpd).State = EntityState.Modified;
             pd.SaveChanges();
             return RedirectToAction("Index");
         }

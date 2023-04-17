@@ -1,4 +1,6 @@
-﻿@model WebBanHang.Models.HomeModels
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<WebBanHang.Context.Product>
 @{
     ViewBag.Title = "Listing_Grid";
 }
@@ -28,46 +30,212 @@
     <script src="~/Scripts/js/script.js" type="text/javascript"></script>
 
 </head>
+<style>
+    .pagination {
+        display: inline-block;
+        padding-left: 0;
+        margin: 20px,0;
+        border-radius: 4px;
+    }
+
+        .pagination > li {
+            display: inline;
+        }
+
+            .pagination > li > a,
+            .pagination > li > span {
+                position: relative;
+                float: left;
+                padding: 6px 12px;
+                margin-left: -1px;
+                line-height: 1.428571429;
+                text-decoration: #ffffff;
+                border: 1px solid #dddddd;
+            }
+
+            .pagination > li:first-child > a,
+            .pagination > li:first-child > span {
+                margin-left: 0;
+                border-bottom-left-radius: 4px;
+                border-top-left-radius: 4px;
+            }
+
+            .pagination > li:last-child > a,
+            .pagination > li:last-child > span {
+                border-bottom-right-radius: 4px;
+                border-bottom-right-radius: 4px;
+            }
+
+            .pagination > li > a:hover,
+            .pagination > li > span:hover,
+            .pagination > li > a:focus,
+            .pagination > li > span:focus {
+                background-color: #eeeeee;
+            }
+
+        .pagination > .active > a,
+        .pagination > .active > span,
+        .pagination > .active > a:hover,
+        .pagination > .active > span:hover
+        .pagination > .active > a:focus,
+        .pagination > .active > span:focus {
+            z-index: 2;
+            color: #ffffff;
+            cursor: default;
+            background-color: #428bca;
+        }
+
+        .pagination > .disabled > a,
+        .pagination > .disabled > span,
+        .pagination > .disabled > a:hover,
+        .pagination > .disabled > a:focus {
+            color: #999999;
+            cursor: not-allowed;
+            background-color: #ffffff;
+            border-color: #dddddd;
+        }
+
+        .pagination-lg > li > a,
+        .pagination > li > span {
+            padding: 10px 16px;
+            font-size: 10px;
+        }
+
+    .pagination-lg > li:first-child > a,
+    .pagination-lg > li:first-child > span {
+        border-bottom-left-radius: 6px;
+        border-top-left-radius: 4px;
+    }
+
+    .pagination-lg > li:last-child > a,
+    .pagination-lg > li:last-child > span {
+        border-bottom-right-radius: 6px;
+        border-bottom-right-radius: 6px;
+    }
+
+    .pagination-sm > li > a,
+    .pagination-sm > li > span {
+        padding: 5px 10px;
+        font-size: 12px;
+    }
+
+    .pagination-sm > li:first-child > a,
+    .pagination-sm > li:first-child > span {
+        border-bottom-left-radius: 3px;
+        border-bottom-left-radius: 3px;
+    }
+
+    .pagination-sm > li:last-child > a,
+    .pagination-sm > li:last-child > span {
+        border-bottom-right-radius: 3px;
+        border-bottom-right-radius: 3px;
+    }
+
+    .pager {
+        padding-left: 0;
+        margin: 20px 0;
+        text-align: center;
+        list-style: none;
+    }
+
+        .pager:before,
+        .pager:after {
+            display: table;
+            content: "";
+        }
+
+        .pager:after {
+            clear: both;
+        }
+
+        .pager:before,
+        .pager:after {
+            display: table;
+            content: "";
+        }
+
+        .pager:after {
+            clear: both;
+        }
+
+        .pager li {
+            display: inline;
+        }
+
+            .pager li > a,
+            .pager li > span {
+                display: inline-block;
+                padding: 5px 14px;
+                background-color: #ffffff;
+                border: 1px solid #dddddd;
+                border-radius: 15px;
+            }
+
+                .pager li > a:hover,
+                .pager li > a:focus {
+                    text-decoration: none;
+                    background-color: #eeeeee;
+                }
+
+        .pager .next > a,
+        .pager .next > span {
+            float: right;
+        }
+
+        .pager .previous > a,
+        .pager .previous > span {
+            float: left;
+        }
+
+        .pager .disabled > a,
+        .pager .disabled > a:hover,
+        .pager .disabled > a:focus,
+        .pager .disabled > span {
+            color: #999999;
+            cursor: not-allowed;
+            background-color: #ffffff;
+        }
+</style>
+
 <!-- ========================= SECTION CONTENT ========================= -->
 <section class="section-content padding-y">
     <div class="container">
-        @foreach (var item in Model.ListCategories)
+        @*  @foreach (var item in Model)
         {
-            <header class="section-heading heading-line">
-                <h4 class="title-section text-uppercase">@item.Name</h4>
-            </header>
-          
-        }
+             <header class="section-heading heading-line">
+                    <h4 class="title-section text-uppercase">Điện thoại</h4>
+                </header>
+
+        }*@
+
         <div class="row">
-            @foreach (var item1 in Model.ListProducts)
+            @foreach (var item in Model)
             {
-
-
                 <div class="col-md-3">
                     <figure class="card card-product-grid">
                         <div class="img-wrap">
-                            @if (item1.Price > item1.PriceDiscount)
+                            @if (item.Price > item.PriceDiscount)
                             {
                                 <span class="badge badge-danger"> Sale </span>
                             }
-                            <img src="~/Content/images/items/@item1.Avatar">
+                            <img src="~/Content/images/items/@item.Avatar">
                         </div> <!-- img-wrap.// -->
                         <figcaption class="info-wrap">
 
                             <div class="price-wrap">
-                                @if (item1.Price > item1.PriceDiscount)
+                                @if (item.Price > item.PriceDiscount)
                                 {
-                                    <a class="title mb-2"> @Html.ActionLink(item1.Name, "ProductDetail", "ProductDetail", new { Id = item1.Id }, null)</a>
+                                    <a class="title mb-2"> @Html.ActionLink(item.Name, "ProductDetail", "ProductDetail", new { Id = item.Id }, null)</a>
                                     <div class="price-wrap">
-                                        <var class="price h4">@item1.PriceDiscount</var>
-                                        <del class="text-muted">@item1.Price</del>
+                                        <var class="price h4">@item.PriceDiscount</var>
+                                        <del class="text-muted">@item.Price</del>
                                     </div>
                                 }
                                 else
                                 {
-                                    <a class="title mb-2"> @Html.ActionLink(item1.Name, "ProductDetail", "ProductDetail", new { Id = item1.Id }, null)</a>
+                                    <a class="title mb-2"> @Html.ActionLink(item.Name, "ProductDetail", "ProductDetail", new { Id = item.Id }, null)</a>
                                     <div class="price-wrap">
-                                        <var class="price h4">@item1.Price</var>
+                                        <var class="price h4">@item.Price</var>
 
                                     </div>
 
@@ -80,58 +248,24 @@
                             <hr>
 
 
-                            <a > <i class="fa fa-envelope"></i> @Html.ActionLink("Thêm vào giỏ hàng", "Cart", "Cart", null, new { @class = "btn btn-outline-primary" }) </a>
+                            <a> <i class="fa fa-envelope"></i> @Html.ActionLink("Thêm vào giỏ hàng", "Cart", "Cart", null, new { @class = "btn btn-outline-primary" }) </a>
 
                         </figcaption>
                     </figure>
                 </div> <!-- col.// -->
+
             }
+
+
+
+
+
+
+
         </div> <!-- row end.// -->
-
-
-        <nav class="mb-4" aria-label="Page navigation sample">
-            <ul class="pagination">
-                <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
-                <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">4</a></li>
-                <li class="page-item"><a class="page-link" href="#">5</a></li>
-                <li class="page-item"><a class="page-link" href="#">Next</a></li>
-            </ul>
-        </nav>
-
-
-        <div class="box text-center">
-            <p>Did you find what you were looking for？</p>
-            <a href="" class="btn btn-light">Yes</a>
-            <a href="" class="btn btn-light">No</a>
-        </div>
+        Trang @(Model.PageCount < Model.PageNumber ? 0: Model.PageNumber) of @Model.PageCount
+        @Html.PagedListPager(Model, page => Url.Action("Listing_Grid", new { page, currentFilter = ViewBag.CurrentFilter }))
 
     </div> <!-- container .//  -->
 </section>
 <!-- ========================= SECTION CONTENT END// ========================= -->
-<!-- ========================= SECTION SUBSCRIBE  ========================= -->
-<section class="padding-y-lg bg-light border-top">
-    <div class="container">
-
-        <p class="pb-2 text-center">Delivering the latest product trends and industry news straight to your inbox</p>
-
-        <div class="row justify-content-md-center">
-            <div class="col-lg-4 col-sm-6">
-                <form class="form-row">
-                    <div class="col-8">
-                        <input class="form-control" placeholder="Your Email" type="email">
-                    </div> <!-- col.// -->
-                    <div class="col-4">
-                        <button type="submit" class="btn btn-block btn-warning"> <i class="fa fa-envelope"></i> Subscribe </button>
-                    </div> <!-- col.// -->
-                </form>
-                <small class="form-text">We’ll never share your email address with a third-party. </small>
-            </div> <!-- col-md-6.// -->
-        </div>
-
-
-    </div>
-</section>
-<!-- ========================= SECTION SUBSCRIBE END// ========================= -->

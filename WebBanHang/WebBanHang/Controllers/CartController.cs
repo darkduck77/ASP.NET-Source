@@ -14,9 +14,12 @@ namespace WebBanHang.Controllers
         WebsitebanhangEntities4 pd = new WebsitebanhangEntities4();
         public ActionResult Cart()
         {
-            CartModels model = new CartModels();
-            model.ListProducts =pd.Product.ToList();
-            return View(model);
+            HomeModels homeModels = new HomeModels();
+            homeModels.ListProducts = pd.Product.ToList();
+            homeModels.ListBrands = pd.Brand.ToList();
+            homeModels.ListCategories = pd.Category.ToList();
+            homeModels.ListUsers = pd.User.ToList();
+            return View(homeModels);
         }
     }
 }

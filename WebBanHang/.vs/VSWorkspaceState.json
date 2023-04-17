@@ -4,12 +4,13 @@
     "\\WebBanHang",
     "\\WebBanHang\\Areas",
     "\\WebBanHang\\Areas\\Admin",
+    "\\WebBanHang\\Areas\\Admin\\Controllers",
     "\\WebBanHang\\Areas\\Admin\\Views",
     "\\WebBanHang\\Areas\\Admin\\Views\\Product",
     "\\WebBanHang\\Views",
-    "\\WebBanHang\\Views\\Cart",
-    "\\WebBanHang\\Views\\Home",
+    "\\WebBanHang\\Views\\ProductDetail",
     "\\WebBanHang\\Views\\Shared"
   ],
+  "SelectedNode": "\\WebBanHang\\Areas\\Admin\\Controllers\\BrandController.cs",
   "PreviewInSolutionExplorer": false
 }

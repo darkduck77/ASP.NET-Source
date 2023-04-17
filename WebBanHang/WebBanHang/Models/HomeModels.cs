@@ -12,5 +12,11 @@ namespace WebBanHang.Models
         public List<User> ListUsers { get; set;}
         public List<Product> ListProducts { get; set; }
         public List<Brand> ListBrands { get; set; }
+
+        internal object ToPagedList(int pageNumber, int pageSize)
+        {
+            throw new NotImplementedException();
+        }
+
     }
 }

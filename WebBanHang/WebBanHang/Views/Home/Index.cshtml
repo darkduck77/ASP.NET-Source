@@ -115,14 +115,17 @@
         <!-- =============== SECTION DEAL =============== -->
         <section class="padding-bottom">
             <div class="card card-deal">
-                <div class="col-heading content-body">
+                <div class="col-heading content-body" >
                     <header class="section-heading">
-                        <h3 class="section-title">Siêu Sale</h3>
-
+                        <h3 class="section-title" >Siêu Sale</h3>
+                        @foreach (var item1 in Model.ListProducts.Where(p => p.TypeId == 1).Take(1))
+                        {
+                            @Html.ActionLink("Xem thêm", "Category", "Category", new { Id = item1.TypeId }, new { @class = "btn btn-outline-primary rounded-pill" })
+                        }
                     </header><!-- sect-heading -->
 
                 </div> <!-- col.// -->
-                @foreach (var item in Model.ListProducts.Take(4))
+                @foreach (var item in Model.ListProducts.Where(p=>p.TypeId==1).Take(3))
                 {
                     if (item.PriceDiscount < item.Price)
                     {
@@ -172,19 +175,18 @@
                             <div class="col-md-9">
                                 <ul class="row no-gutters bordered-cols">
 
-                                    @foreach (var item1 in Model.ListProducts.Take(8))
+                                    @foreach (var item1 in Model.ListProducts.Where(p => p.CategoryId == item.Id).Take(8))
                                     {
-                                            if (item1.CategoryId == item.Id)
-                                            {
+                                        
                                                 <li class="col-6 col-lg-3 col-md-4">
                                                     <div class="card-body">
                                                         <img class="img-sm float-right" src="~/Content/images/items/@item1.Avatar">
-                                                        @Html.ActionLink(item.Name, "ProductDetail", "ProductDetail", new { Id = item.Id }, null)
+                                                        @Html.ActionLink(item1.Name, "ProductDetail", "ProductDetail", new { Id = item1.Id }, null)
                                                         <p class="text-muted"><i class="fa fa-map-marker-alt"></i> @item1.FullDestription</p>
                                                     </div>
                                                 </li>
                                             
-                                            }
+                                           
 
                                     }
                                 </ul>
@@ -198,12 +200,20 @@
             <section class="padding-bottom-sm">
 
                 <header class="section-heading heading-line">
-                    <h4 class="title-section text-uppercase">Dành cho bạn</h4>
+                    <h4 class="title-section text-uppercase">
+                        Dành cho bạn  @foreach (var item1 in Model.ListProducts.Where(p => p.TypeId == 2).Take(1))
+                        {
+                            @Html.ActionLink("Xem thêm", "Category", "Category", new { Id = item1.TypeId }, new { @class = "btn btn-outline-primary rounded-pill" })
+                        }
+                    </h4>
+                   
                 </header>
 
                 <div class="row row-sm">
-                    @foreach (var item in Model.ListProducts)
+                    @foreach (var item in Model.ListProducts.Where(p => p.TypeId == 2).Take(6))
                     {
+
+
                         if (item.TypeId == 2)
                         {
                             <div class="col-xl-2 col-lg-3 col-md-4 col-6">
@@ -219,7 +229,11 @@
                             </div> <!-- col.// -->
                         }
 
+
+
+                        
                     }
+
 
                 </div> <!-- row.// -->
             </section>
@@ -230,8 +244,6 @@
                 <header class="section-heading heading-line">
                     <h4 class="title-section text-uppercase">Thương Hiệu Nổi Bật</h4>
                 </header>
-
-
                 <div class="row">
                     @foreach (var item in Model.ListBrands)
                     {
@@ -241,9 +253,9 @@
                                     <img src="~/Content/images/posts/@item.Avatar">
                                 </a>
                                 <div class="card-body">
-                                    <h6 class="title"> @Html.ActionLink(item.Name, "ProductDetail", "ProductDetail", new { Id = item.Id }, null)</h6>
+                                    <h6 class="title"> @Html.ActionLink(item.Name, "Listing_Large", "Listing_Large", new { Id = item.Id }, null)</h6>
 
-                                    <p class="small text-uppercase text-muted">Order protection</p>
+                                   
                                 </div>
                             </article> <!-- card.// -->
                         </div> <!-- col.// -->
@@ -260,29 +272,6 @@
             </article>
         </div>
     <!-- container end.// -->
-    <!-- ========================= SECTION SUBSCRIBE  ========================= -->
-    <section class="section-subscribe padding-y-lg">
-        <div class="container">
-
-            <p class="pb-2 text-center text-white">Delivering the latest product trends and industry news straight to your inbox</p>
-
-            <div class="row justify-content-md-center">
-                <div class="col-lg-5 col-md-6">
-                    <form class="form-row">
-                        <div class="col-md-8 col-7">
-                            <input class="form-control border-0" placeholder="Your Email" type="email">
-                        </div> <!-- col.// -->
-                        <div class="col-md-4 col-5">
-                            <button type="submit" class="btn btn-block btn-warning"> <i class="fa fa-envelope"></i> Subscribe </button>
-                        </div> <!-- col.// -->
-                    </form>
-                    <small class="form-text text-white-50">We’ll never share your email address with a third-party. </small>
-                </div> <!-- col-md-6.// -->
-            </div>
-
-
-        </div>
-    </section>
-    <!-- ========================= SECTION SUBSCRIBE END// ========================= -->
+  
 </body>
 </html>

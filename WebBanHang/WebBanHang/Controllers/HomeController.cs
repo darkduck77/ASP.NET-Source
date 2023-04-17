@@ -14,7 +14,7 @@ namespace WebBanHang.Controllers
         public ActionResult Index()
         {
             HomeModels homeModels = new HomeModels();
-            homeModels.ListProducts= pd.Product.ToList();
+            homeModels.ListProducts = pd.Product.ToList();
             homeModels.ListBrands= pd.Brand.ToList();
             homeModels.ListCategories=pd.Category.ToList();
             homeModels.ListUsers=pd.User.ToList();

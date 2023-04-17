@@ -4,17 +4,20 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using WebBanHang.Context;
+using WebBanHang.Models;
 
 namespace WebBanHang.Controllers
 {
     public class ProductDetailController : Controller
     {
         // GET: ProductDetail
-        WebsitebanhangEntities4 con=new WebsitebanhangEntities4();
+        WebsitebanhangEntities4 pd=new WebsitebanhangEntities4();
         public ActionResult ProductDetail(int Id)
         {
-            var product=con.Product.Where(p=>p.Id==Id).FirstOrDefault();
-            return View(product);
+            HomeModels homeModels = new HomeModels();
+            homeModels.ListProducts=pd.Product.Where(p => p.Id == Id).ToList();
+            
+            return View(homeModels);
         }
     }
 }
